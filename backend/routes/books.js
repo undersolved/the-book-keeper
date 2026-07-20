@@ -17,6 +17,12 @@ router.get("/:id", (req, res) => {
 
 router.post("/", (req, res) => {
 	const { title, author, genre, price } = req.body;
+
+	if (!title || !author || !genre || price === undefined) {
+		return res.status(400).json({
+			message: "All fields are required.",
+		});
+	}
 	const newBook = {
 		id: books.length + 1,
 		title,
