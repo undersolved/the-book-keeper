@@ -3,6 +3,8 @@ const booksRouter = require("./routes/books");
 const app = express();
 const PORT = 8000;
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
 	res.send("Welcome to the Homepage of the bookstore API");
 });

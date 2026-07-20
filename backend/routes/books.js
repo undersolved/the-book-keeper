@@ -15,4 +15,18 @@ router.get("/:id", (req, res) => {
 	res.status(200).json(book);
 });
 
+router.post("/", (req, res) => {
+	const { title, author, genre, price } = req.body;
+	const newBook = {
+		id: books.length + 1,
+		title,
+		author,
+		genre,
+		price,
+	};
+
+	books.push(newBook);
+	res.status(201).json(newBook);
+});
+
 module.exports = router;
