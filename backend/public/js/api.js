@@ -3,7 +3,9 @@ const BASE_URL = "";
 async function getBooks() {
 	const response = await fetch(`${BASE_URL}/books`);
 
-	const books = await response.json();
+	if (!response.ok) {
+		throw new Error("Failed to fetch books");
+	}
 
-	return books;
+	return await response.json();
 }
